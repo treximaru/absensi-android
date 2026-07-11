@@ -1,6 +1,6 @@
 # 📱 Absensi Android
 
-Aplikasi Android WebView untuk **Absensi Mapel Harian**. Akses langsung ke `https://absen.berkahsablon.com/` dari HP Android.
+Aplikasi Android WebView untuk **Absensi Mapel Harian**. Akses langsung ke `https://absen.absen.absen-mapel.com/` dari HP Android.
 
 > **🌐 Web App:** [Absensi Mapel Harian](https://github.com/treximaru/absensi-mapel-harian) — source code PHP backend
 
@@ -8,7 +8,7 @@ Aplikasi Android WebView untuk **Absensi Mapel Harian**. Akses langsung ke `http
 
 ## ✨ Fitur
 
-- **WebView** loading `absen.berkahsablon.com`
+- **WebView** loading `absen.absen.absen-mapel.com`
 - **Progress bar** saat loading halaman
 - **Back button** navigasi di dalam WebView
 - **File upload** support (input file)
@@ -23,10 +23,10 @@ Aplikasi Android WebView untuk **Absensi Mapel Harian**. Akses langsung ke `http
 
 | Item | Detail |
 |------|--------|
-| Package | `com.berkahsablon.absensi` |
+| Package | `com.absen-mapel.absensi` |
 | Min SDK | Android 7.0 (API 24) |
 | Target SDK | Android 14 (API 34) |
-| URL | `https://absen.berkahsablon.com/` |
+| URL | `https://absen.absen.absen-mapel.com/` |
 | Size | ~2.7 MB |
 
 ---
@@ -73,7 +73,7 @@ keytool -genkeypair -v \
   -keystore release.jks \
   -alias absensi -keyalg RSA -keysize 2048 -validity 10000 \
   -storepass <password> -keypass <password> \
-  -dname 'CN=Berkah Sablon, OU=IT, O=Berkah Sablon, L=Banjarnegara, ST=Jawa Tengah, C=ID'
+  -dname 'CN=Absen Mapel, OU=IT, O=Absen Mapel, L=Banjarnegara, ST=Jawa Tengah, C=ID'
 
 # Sign
 jarsigner -keystore release.jks -storepass <password> \
@@ -90,7 +90,7 @@ absensi-android/
 │   ├── build.gradle              # App dependencies
 │   └── src/main/
 │       ├── AndroidManifest.xml   # Manifest (permission, activity)
-│       ├── java/com/berkahsablon/absensi/
+│       ├── java/com/absen-mapel/absensi/
 │       │   └── MainActivity.java # WebView activity
 │       └── res/
 │           ├── layout/           # Layout XML
@@ -111,7 +111,7 @@ absensi-android/
 Edit `MainActivity.java`:
 
 ```java
-private static final String BASE_URL = "https://absen.berkahsablon.com/";
+private static final String BASE_URL = "https://absen.absen.absen-mapel.com/";
 ```
 
 ### Ganti Icon
