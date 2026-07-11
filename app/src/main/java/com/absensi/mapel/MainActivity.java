@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.CookieManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -21,6 +22,9 @@ public class MainActivity extends Activity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
+        // Enable cookie persistence for stay login
+        CookieManager.getInstance().setAcceptCookie(true);
+
         webView = (WebView) findViewById(R.id.webView);
         WebSettings ws = webView.getSettings();
         ws.setJavaScriptEnabled(true);
@@ -32,6 +36,9 @@ public class MainActivity extends Activity {
 
         webView.setWebViewClient(new WebViewClient());
         webView.setWebChromeClient(new WebChromeClient());
+
+        // Enable third-party cookies for session persistence
+        CookieManager.getInstance().setAcceptThirdPartyCookies(webView, true);
 
         if (savedInstanceState != null) {
             webView.restoreState(savedInstanceState);
@@ -55,13 +62,21 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (webView != null) webView.onResume();
+        if (webView != null) {
+            webView.onResume();
+            // Flush cookies to disk on resume
+            CookieManager.getInstance().flush();
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        if (webView != null) webView.onPause();
+        if (webView != null) {
+            webView.onPause();
+            // Flush cookies to disk on pause
+            CookieManager.getInstance().flush();
+        }
     }
 
     @Override
