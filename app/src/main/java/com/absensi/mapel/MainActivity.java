@@ -1,4 +1,4 @@
-package com.berkahsablon.absensi;
+package com.absensi.mapel;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -12,7 +12,6 @@ import android.webkit.WebViewClient;
 public class MainActivity extends Activity {
     private WebView webView;
     private static final String URL = "https://absen.berkahsablon.com/";
-    private static final String WEBVIEW_STATE = "webViewState";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,33 +43,25 @@ public class MainActivity extends Activity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        if (webView != null) {
-            webView.saveState(outState);
-        }
+        if (webView != null) webView.saveState(outState);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        if (webView != null) {
-            webView.restoreState(savedInstanceState);
-        }
+        if (webView != null) webView.restoreState(savedInstanceState);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (webView != null) {
-            webView.onResume();
-        }
+        if (webView != null) webView.onResume();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        if (webView != null) {
-            webView.onPause();
-        }
+        if (webView != null) webView.onPause();
     }
 
     @Override
